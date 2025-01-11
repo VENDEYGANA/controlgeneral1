@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Cuentas y Reporte de Fallas - Corporación Vende y Gana</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">CONTROL DE CUENTAS Y REPORTE DE FALLAS - CORPORACIÓN VENDE Y GANA</div>
+        <div>
+            <label for="account-data">Datos de la Cuenta:</label>
+            <input type="text" id="account-data">
+        </div>
+        <div>
+            <label for="provider-data">Datos del Proveedor:</label>
+            <input type="text" id="provider-data">
+        </div>
+        <div>
+            <button class="btn" onclick="saveAccount()">Guardar</button>
+        </div>
+        <div>
+            <label for="filter">Filtrar:</label>
+            <input type="text" id="filter" onkeyup="filterAccounts()">
+            <label for="filter-date">Filtrar por Fecha:</label>
+            <input type="date" id="filter-date" onchange="filterAccounts()">
+        </div>
+        <table id="accounts-table">
+            <thead>
+                <tr>
+                    <th>Datos de la Cuenta</th>
+                    <th>Datos del Proveedor</th>
+                    <th>FECHA DE COMPRA DE LA CUENTA VENDE Y GANA</th>
+                    <th>Estado</th>
+                    <th>Datos del Comprador</th>
+                    <th>Fecha de Venta y Vencimiento</th>
+                    <th>Reporte de Falla</th>
+                    <th>Respuesta Falla</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="accounts-body">
+                <!-- Las filas se agregarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para el reporte de falla -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Reporte de Falla</h2>
+            <label for="failure-report">Reporte de Falla:</label>
+            <input type="text" id="failure-report">
+            <br><br>
+            <button class="btn" onclick="saveFailureReport()">Guardar Reporte de Falla</button>
+            <h2>Respuesta de Falla</h2>
+            <label for="failure-response">Respuesta a la Falla:</label>
+            <input type="text" id="failure-response">
+            <br><br>
+            <label for="failure-executive">Ejecutivo que atiende el reporte:</label>
+            <select id="failure-executive">
+                <option value="Ricardo">Ricardo</option>
+                <option value="Thany">Thany</option>
+                <option value="Milagros">Milagros</option>
+                <option value="Antoni">Antoni</option>
+                <option value="Aireana">Aireana</option>
+            </select>
+            <br><br>
+            <button class="btn" onclick="saveFailureResponse()">Guardar Respuesta de Falla</button>
+        </div>
+    </div>
+
+    <!-- Modal para copiar datos -->
+    <div id="copyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCopyModal()">&times;</span>
+            <h2>¿Qué deseas copiar?</h2>
+            <button class="btn" onclick="copyAccountData()">Datos de la Cuenta</button>
+            <button class="btn" onclick="copyFailureReport()">Reporte de Falla</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
